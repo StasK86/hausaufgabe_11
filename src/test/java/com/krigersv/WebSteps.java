@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -15,7 +16,7 @@ public class WebSteps {
 
     @Step("Открываем главную страницу")
     public WebSteps openPage() {
-        open("https://github.com");
+        open(baseUrl);
         return this;
     }
 

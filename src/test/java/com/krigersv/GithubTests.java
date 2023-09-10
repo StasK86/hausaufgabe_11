@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -20,8 +21,8 @@ public class GithubTests extends TestBase {
 
     @Test
     @DisplayName("Issue (Welcome to issues) существует в репозитории")
-    public void issueExist() {
-        open("https://github.com");
+    public void issueExistTest() {
+        open(baseUrl);
         page.click();
         input.sendKeys(REPOSITORY);
         input.submit();
@@ -32,8 +33,8 @@ public class GithubTests extends TestBase {
 
     @Test
     @DisplayName("step с использованием лямбда")
-    public void issueLambda() {
-        step("Главная страница сайта", () -> open("https://github.com"));
+    public void issueLambdaTest() {
+        step("Главная страница сайта", () -> open(baseUrl));
         step("Поиск репозитория" + REPOSITORY, () -> {
             page.click();
             input.sendKeys(REPOSITORY);
@@ -48,7 +49,7 @@ public class GithubTests extends TestBase {
 
     @Test
     @DisplayName("Тест с использованием аннотации @Step")
-    public void issueAnnotated() {
+    public void issueAnnotatedTest() {
         WebSteps steps = new WebSteps();
                 steps.openPage()
                 .searchField(REPOSITORY)
